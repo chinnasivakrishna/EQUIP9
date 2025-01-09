@@ -17,7 +17,7 @@ const DashboardPage = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:5000/api/user/profile', {
+        const response = await fetch('https://equip9-backend-vg29.onrender.com/api/user/profile', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
