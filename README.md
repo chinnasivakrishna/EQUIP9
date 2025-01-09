@@ -1,70 +1,177 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Equip9: Registration, Login, and Dashboard Application
 
-In the project directory, you can run:
+## Table of Contents
+1. [Project Overview](#project-overview)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Backend Setup](#backend-setup)
+5. [Frontend Setup](#frontend-setup)
+6. [API Endpoints](#api-endpoints)
+7. [How to Run](#how-to-run)
+8. [Screenshots](#screenshots)
+9. [Future Enhancements](#future-enhancements)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Overview
+Equip9 is a web application designed to manage user registration, authentication, and personalized dashboard features. It enables users to:
+- Register with their personal details.
+- Log in securely using mobile number and password.
+- Access a personalized dashboard with a contextual greeting.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Features
+- User Registration with validation.
+- User Login with JWT-based authentication.
+- Personalized Dashboard with dynamic greeting messages.
+- Logout functionality to end the session.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Backend
+- **Framework**: Node.js with Express
+- **Database**: Clloud clever(MY SQL)
+- **Authentication**: JWT (JSON Web Tokens)
+- **Deployed On**: Render
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Frontend
+- **Framework**: React.js
+- **Styling**: Tailwind CSS
+- **Routing**: React Router DOM
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Backend Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
+- Node.js (v16 or higher)
+- My Sql (local or cloud)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo-url
+   cd backend
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Configure environment variables:
+   Create a `.env` file in the root directory with the following:
+   ```env
+   PORT=5000
+   Password=your-password
+   JWT_SECRET=your-secret-key
+   ```
 
-## Learn More
+4. Run the server:
+   ```bash
+   npm start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The backend will run on `http://localhost:5000`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Frontend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Prerequisites
+- Node.js (v16 or higher)
 
-### Analyzing the Bundle Size
+### Installation
+1. Navigate to the frontend folder:
+   ```bash
+   cd frontend
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### Making a Progressive Web App
+3. Run the application:
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The frontend will run on `http://localhost:3000`.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## API Endpoints
 
-### Deployment
+### Auth Routes
+- **POST** `/api/auth/register`
+  - Registers a new user.
+  - Body:
+    ```json
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "mobileNumber": "1234567890",
+      "password": "password123"
+    }
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **POST** `/api/auth/login`
+  - Logs in an existing user and returns a JWT token.
+  - Body:
+    ```json
+    {
+      "mobileNumber": "1234567890",
+      "password": "password123"
+    }
+    ```
 
-### `npm run build` fails to minify
+### User Routes
+- **GET** `/api/user/profile`
+  - Retrieves user details.
+  - Requires `Authorization: Bearer <JWT>` header.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## How to Run
+
+1. Start the backend server:
+   ```bash
+   cd backend
+   npm start
+   ```
+
+2. Start the frontend:
+   ```bash
+   cd frontend
+   npm start
+   ```
+
+3. Open your browser and navigate to `http://localhost:3000`.
+
+---
+
+## Screenshots
+### Registration Page
+![Registration Page](register.png)
+
+### Login Page
+![Login Page](login.png)
+
+### Dashboard
+![Dashboard](dashboard.png)
+
+---
+
+## Future Enhancements
+- Add password recovery functionality.
+- Implement role-based access control.
+- Enhance the dashboard with more user statistics and charts.
+
+---
+
